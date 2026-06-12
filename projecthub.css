@@ -635,3 +635,157 @@
 .dir-key{color:var(--accent,#89b4fa);min-width:100px}
 
 }
+
+
+
+/* ── modal overlay ─────────────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{min-width:420px;max-width:560px;animation:fadeUp .18s ease}
+.modal-box.wide{min-width:520px;max-width:680px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.modal-body{padding:16px 18px 18px}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.form-group label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em}
+.form-input,.form-select,.form-textarea{background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:7px 10px;font-size:13px;font-family:var(--font-sans);outline:none;width:100%;box-sizing:border-box;transition:border-color .15s}
+.form-textarea{font-family:var(--font-mono,monospace);resize:vertical;min-height:80px}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent)}
+.form-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);margin-bottom:4px;cursor:pointer}
+.form-check input{accent-color:var(--accent);width:14px;height:14px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;padding-top:14px;border-top:1px solid var(--border-muted)}
+/* ── toast notifications ───────────────────────────────────────── */
+#toast-container{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:2000;pointer-events:none}
+.toast{padding:9px 14px;border-radius:8px;font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:8px;background:var(--surface-2,#313244);border:1px solid var(--border);color:var(--text);box-shadow:0 4px 16px rgba(0,0,0,.4);pointer-events:all;transition:opacity .3s}
+/* ── SSE connection badge ──────────────────────────────────────── */
+.sse-dot{width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;margin-right:4px;transition:background .4s}
+.sse-dot.disconnected{background:var(--danger)}
+/* ── step states ───────────────────────────────────────────────── */
+.build-status-ring.failed{background:var(--danger,.f38ba8);border-color:var(--danger)}
+/* ── process table ─────────────────────────────────────────────── */
+.proc-table{width:100%;border-collapse:collapse;font-size:12px}
+.proc-table th{padding:6px 8px;text-align:left;color:var(--text-muted);font-weight:500;border-bottom:1px solid var(--border-muted)}
+.proc-table td{padding:5px 8px;color:var(--text);border-bottom:1px solid var(--border-muted);font-family:var(--font-mono,monospace)}
+/* ── dir info strip ────────────────────────────────────────────── */
+.dir-strip{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:var(--surface,#1e1e2e);border-radius:8px;font-size:11px;font-family:var(--font-mono);color:var(--text-muted)}
+.dir-row{display:flex;gap:8px;align-items:center}
+.dir-key{color:var(--accent,#89b4fa);min-width:100px}
+/* ── file browser ──────────────────────────────────────────────── */
+.file-table{width:100%;border-collapse:collapse;font-size:13px}
+.file-table th{padding:7px 10px;text-align:left;color:var(--text-muted);font-weight:500;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.file-table td{padding:7px 10px;color:var(--text);border-bottom:1px solid var(--border-muted)}
+.file-table tr:hover td{background:var(--surface)}
+.file-table tr:last-child td{border-bottom:none}
+.file-row-name{display:flex;align-items:center;gap:8px;color:var(--accent);cursor:pointer;font-family:var(--font-mono);font-size:12.5px}
+.file-row-name:hover{text-decoration:underline}
+.file-row-commit{color:var(--text-muted);font-size:11.5px;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-row-age{color:var(--text-muted);font-size:11px;white-space:nowrap;text-align:right}
+/* ── branch bar ────────────────────────────────────────────────── */
+.branch-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;background:var(--surface)}
+.branch-bar select{background:transparent;border:none;color:var(--text);font-size:13px;font-family:var(--font-sans);outline:none;cursor:pointer}
+.branch-bar .clone-url{flex:1;font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* ── commit log ────────────────────────────────────────────────── */
+.commit-list{display:flex;flex-direction:column;gap:0}
+.commit-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border-muted)}
+.commit-item:last-child{border-bottom:none}
+.commit-item:hover{background:var(--surface)}
+.commit-sha{font-family:var(--font-mono);font-size:11px;color:var(--accent);cursor:pointer;padding:2px 6px;background:var(--surface);border-radius:4px;border:1px solid var(--border-muted)}
+.commit-sha:hover{border-color:var(--accent)}
+.commit-msg{font-size:12.5px;color:var(--text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.commit-author{font-size:11px;color:var(--text-muted)}
+.commit-age{font-size:11px;color:var(--text-muted);white-space:nowrap}
+/* ── branch badge ──────────────────────────────────────────────── */
+.branch-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:500;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer}
+.branch-chip:hover{border-color:var(--accent);color:var(--accent)}
+/* ── tag / release ─────────────────────────────────────────────── */
+.release-card{padding:14px;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;background:var(--surface)}
+.release-card:last-child{margin-bottom:0}
+.release-tag{font-family:var(--font-mono);font-size:12px;color:var(--success);font-weight:600}
+.release-title{font-size:14px;font-weight:600;color:var(--text);margin:4px 0 2px}
+.release-body{font-size:12px;color:var(--text-muted);line-height:1.6;white-space:pre-wrap}
+/* ── issue / PR list ───────────────────────────────────────────── */
+.issue-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border-muted);cursor:pointer}
+.issue-item:hover{background:var(--surface)}
+.issue-item:last-child{border-bottom:none}
+.issue-icon{margin-top:2px;flex-shrink:0}
+.issue-title{font-size:13px;color:var(--text);font-weight:500}
+.issue-meta{font-size:11px;color:var(--text-muted);margin-top:2px;display:flex;gap:10px;flex-wrap:wrap}
+.issue-label{display:inline-flex;align-items:center;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:600;margin-right:4px}
+/* ── PR diff ───────────────────────────────────────────────────── */
+.diff-block{font-family:var(--font-mono);font-size:12px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--border);margin-bottom:12px}
+.diff-header{padding:6px 12px;background:var(--surface);color:var(--text-muted);font-size:11px;border-bottom:1px solid var(--border)}
+.diff-line{padding:1px 12px;white-space:pre;display:block}
+.diff-line.add{background:rgba(100,220,100,.07);color:#a6e3a1}
+.diff-line.del{background:rgba(220,100,100,.07);color:#f38ba8}
+.diff-line.ctx{color:var(--text-muted)}
+/* ── wiki ──────────────────────────────────────────────────────── */
+.wiki-sidebar{display:flex;flex-direction:column;gap:4px}
+.wiki-page-link{padding:5px 8px;border-radius:5px;font-size:13px;color:var(--text-muted);cursor:pointer;transition:background .12s}
+.wiki-page-link:hover,.wiki-page-link.active{background:var(--surface);color:var(--text)}
+.wiki-content{font-size:13px;line-height:1.75;color:var(--text)}
+.wiki-content h1,.wiki-content h2,.wiki-content h3{color:var(--text);margin-top:18px;margin-bottom:6px}
+.wiki-content code{font-family:var(--font-mono);background:var(--surface);padding:1px 5px;border-radius:3px;font-size:12px}
+.wiki-content pre{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;overflow-x:auto}
+.wiki-content pre code{background:none;padding:0}
+/* ── inline tab row (repo page) ────────────────────────────────── */
+.repo-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px;padding-left:14px}
+.repo-tab{padding:8px 14px;font-size:13px;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:5px;transition:color .12s}
+.repo-tab:hover{color:var(--text)}
+.repo-tab.active{color:var(--text);border-bottom-color:var(--accent)}
+/* ── insight bar chart ─────────────────────────────────────────── */
+.insight-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.insight-lang{font-size:12px;color:var(--text);min-width:90px}
+.insight-track{flex:1;height:8px;background:var(--border-muted);border-radius:4px;overflow:hidden}
+.insight-fill{height:100%;border-radius:4px}
+.insight-pct{font-size:11px;color:var(--text-muted);min-width:36px;text-align:right}
+/* ── search overlay ────────────────────────────────────────────── */
+.search-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;display:none;align-items:flex-start;justify-content:center;padding-top:80px}
+.search-overlay.open{display:flex}
+.search-box{width:560px;background:var(--surface-2,#313244);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.search-input-wrap{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.search-input-wrap input{background:none;border:none;color:var(--text);font-size:15px;flex:1;outline:none;font-family:var(--font-sans)}
+.search-results{max-height:360px;overflow-y:auto}
+.search-result-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;font-size:13px;color:var(--text)}
+.search-result-item:hover,.search-result-item.selected{background:var(--accent,#89b4fa);color:#fff}
+.search-result-item .sr-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--surface);flex-shrink:0;font-size:14px}
+.search-result-item:hover .sr-icon,.search-result-item.selected .sr-icon{background:rgba(255,255,255,.15)}
+.search-section-label{padding:6px 16px 2px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+/* ── notification panel ────────────────────────────────────────── */
+.notif-panel{position:fixed;top:48px;right:12px;width:320px;background:var(--surface-2,#313244);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:998;display:none;flex-direction:column}
+.notif-panel.open{display:flex}
+.notif-panel-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;font-weight:600;color:var(--text)}
+.notif-item{display:flex;align-items:flex-start;gap:9px;padding:10px 14px;border-bottom:1px solid var(--border-muted);cursor:pointer;font-size:12.5px}
+.notif-item:hover{background:var(--surface)}
+.notif-item:last-child{border-bottom:none}
+.notif-item.unread{background:rgba(137,180,250,.04)}
+.notif-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px}
+.notif-dot.read{background:transparent;border:1px solid var(--border)}
+/* ── user profile panel ────────────────────────────────────────── */
+.profile-panel{position:fixed;top:48px;right:12px;width:220px;background:var(--surface-2,#313244);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:998;display:none;flex-direction:column;overflow:hidden}
+.profile-panel.open{display:flex}
+.profile-panel-top{padding:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.profile-panel-name{font-size:13px;font-weight:600;color:var(--text)}
+.profile-panel-role{font-size:11px;color:var(--text-muted)}
+.profile-menu-item{display:flex;align-items:center;gap:9px;padding:8px 14px;font-size:12.5px;color:var(--text-muted);cursor:pointer;transition:background .1s}
+.profile-menu-item:hover{background:var(--surface);color:var(--text)}
+.profile-menu-item i{width:16px;text-align:center}
+.profile-divider{height:1px;background:var(--border-muted);margin:4px 0}
+/* ── repo detail view ──────────────────────────────────────────── */
+.readme-box{padding:16px 18px;font-size:13px;line-height:1.8;color:var(--text)}
+.readme-box h1,.readme-box h2,.readme-box h3{color:var(--text);margin:14px 0 6px;padding-bottom:6px;border-bottom:1px solid var(--border-muted)}
+.readme-box code{font-family:var(--font-mono);background:var(--surface);padding:1px 5px;border-radius:3px;font-size:12px}
+.readme-box pre{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:14px;overflow-x:auto;margin:10px 0}
+.readme-box pre code{background:none;padding:0}
+/* ── settings page ─────────────────────────────────────────────── */
+.settings-layout{display:grid;grid-template-columns:180px 1fr;gap:16px}
+.settings-nav{display:flex;flex-direction:column;gap:2px}
+.settings-nav-item{padding:6px 10px;border-radius:6px;font-size:13px;color:var(--text-muted);cursor:pointer}
+.settings-nav-item:hover,.settings-nav-item.active{background:var(--surface);color:var(--text)}
+.settings-section{display:none}
+.settings-section.active{display:block}
+.settings-section-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.settings-section-sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.danger-zone{border:1px solid var(--danger,#f38ba8);border-radius:8px;padding:16px;margin-top:16px}
+.danger-zone-title{font-size:13px;font-weight:600;color:var(--danger,#f38ba8);margin-bottom:8px}
+
+
+}
